@@ -1,0 +1,8 @@
+docker volume create osm-prod
+
+docker volume create osm-tiles
+
+
+docker run  -v /home/pop/Desktop/osmoffline/new/monaco-latest.osm.pbf:/data/region.osm.pbf -v osm-prod:/data/database/  overv/openstreetmap-tile-server  import
+
+docker run -p 8081:80 -v osm-prod:/data/database -d overv/openstreetmap-tile-server run
